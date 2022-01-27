@@ -40,7 +40,7 @@ public final class CountGame extends JavaPlugin {
     private void registerCommand(String cmdName, CommandExecutor executor) {
         PluginCommand cmd = Bukkit.getPluginCommand(cmdName);
         if (cmd == null) {
-            Bukkit.getConsoleSender().sendMessage("[CountGame] " + ChatColor.RED + "插件加载失败。hg_count 命令未正常注册，请联系作者寻求帮助。");
+            Bukkit.getConsoleSender().sendMessage("[CountGame] " + ChatColor.RED + "插件加载失败。" + cmdName + " 命令未正常注册，请联系作者寻求帮助。");
             Bukkit.getPluginManager().disablePlugin(this);
         } else {
             cmd.setExecutor(executor);
