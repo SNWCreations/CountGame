@@ -5,7 +5,6 @@ api-version: 1.16
 authors: [ SNWCreations ]
 description: Nothing here yet. lol
 website: https://www.mcbbs.net/home.php?mod=space&uid=2190885
-build_time: '${maven.build.timestamp}'
 
 commands:
   cgc:

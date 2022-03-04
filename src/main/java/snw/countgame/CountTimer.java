@@ -35,18 +35,15 @@ public final class CountTimer extends BukkitRunnable {
             isOnce = false;
             String msstr = String.valueOf(ms);
             for (Player i : Bukkit.getOnlinePlayers()) {
-                i.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + (((secs == 3 && ms != 0 || secs > 3)) ? ChatColor.MAGIC : "") + "" + (secs < 10 ? "0" : "") + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : ("0" + msstr.charAt(0))), "", fadein, 30, 10);
+                i.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + (((secs == 3 && ms != 0 || secs > 3)) ? ChatColor.MAGIC : "") + "" + (secs < 10 ? "0" : "") + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : ("0" + msstr.charAt(0))), "", fadein, 60, 10);
             }
         }
     }
 
     public void stop() {
         cancel();
-        String msstr = String.valueOf(ms);
-        for (Player i : Bukkit.getOnlinePlayers()) {
-            i.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + (((secs == 3 && ms != 0 || secs > 3)) ? ChatColor.MAGIC : "") + "" + (secs < 10 ? "0" : "") + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : ("0" + msstr.charAt(0))), "", 0, 60, 10);
-        }
         Bukkit.broadcastMessage(ChatColor.RED + "计时停止。");
-        new DisplayProcess(secs, ms).runTaskLater(CountGame.getInstance(), 140L);
+        String msstr = String.valueOf(ms);
+        Bukkit.getScheduler().runTaskLater(CountGame.getInstance(), () -> Bukkit.getOnlinePlayers().forEach(IT -> IT.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : "00"), "", 20, 100, 10)), 140L);
     }
 }
