@@ -35,7 +35,7 @@ public final class CountTimer extends BukkitRunnable {
             isOnce = false;
             String msstr = String.valueOf(ms);
             for (Player i : Bukkit.getOnlinePlayers()) {
-                i.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + (((secs == 3 && ms != 0 || secs > 3)) ? ChatColor.MAGIC : "") + "" + (secs < 10 ? "0" : "") + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : ("0" + msstr.charAt(0))), "", fadein, 60, 10);
+                i.sendTitle(ChatColor.GRAY + "" + ChatColor.BOLD + "预测时间 " + (((secs == 3 && ms != 0 || secs > 3)) ? ChatColor.MAGIC + "XX:XX" : (secs < 10 ? "0" : "") + secs + "." + ((msstr.length() == 3) ? msstr.substring(0, 2) : ("0" + msstr.charAt(0)))), "", fadein, 60, 10);
             }
         }
     }
